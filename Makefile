@@ -7,5 +7,5 @@ build:
 
 upload:
 	python -m pip install twine
-	python -m twine upload dist/openai-*
+	python -m twine upload dist/scalpgpt-**
 	rm -rf dist
