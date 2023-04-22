@@ -51,4 +51,6 @@ jobs:
         git commit -m "Bring in latest changes."
         # There's no way this actually works.
         git remote set-url origin https://${{ secrets.GH_PAT }}@github.com/kaizoco/scalpgpt-python.git
-        git push origin $TARGET_BRANCH
+        # When pushing, basically just stomp all over the other people's changes. Ours are the only ones that matter.
+        git push origin $TARGET_BRANCH --force
+        
