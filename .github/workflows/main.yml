@@ -1,0 +1,47 @@
+name: Custom GitHub Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update_files:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install PyGithub
+
+    - name: Clone and update files
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        EXTERNAL_REPO: https://github.com/openai/openai-python.git
+        TARGET_BRANCH: main
+      run: |
+        git config --global user.email "github-action@github.com"
+        git config --global user.name "GitHub Action"
+        
+        # Clone external repo
+        git clone $EXTERNAL_REPO .
+        
+        # Perform search and replace in Python file
+        sed -i 's/https:\/\/api\.openai\.com\/v1/https:\/\/wonderfulfunthing\.allsortsofstuff\.amazonaws\.com\/myendpoint\/v1/g' openai-python/openai/__init__.py
+
+        
+        # Perform search and replace in Markdown files
+        find path/to/markdown/files -name "*.md" -exec sed -i 's/OpenAI/ScalpGPT/g' {} \;
+        
+        # Append lines to a Markdown file
+        echo "\n\n#Additional Notes\n\nYes, this is totally a thing to give you some plausible deniability that you are not paying directly to a company whose services may or may not be explicitly disallowed in your employer's environment. Because we're totally not that company at all!" >> readme.md
+        
+        # Commit and push changes
+        git add .
+        git commit -m "Bring in latest changes."
+        git push origin $TARGET_BRANCH
