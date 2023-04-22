@@ -9,6 +9,9 @@ jobs:
   update_files:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout current repository
+        uses: actions/checkout@v2
+        
     - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
       uses: GuillaumeFalourd/clone-github-repo-action@v2
       with:
