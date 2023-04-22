@@ -32,7 +32,7 @@ jobs:
         git clone $EXTERNAL_REPO .
         
         # Perform search and replace in Python file
-        sed -i 's/https:\/\/api\.openai\.com\/v1/https:\/\/wonderfulfunthing\.allsortsofstuff\.amazonaws\.com\/myendpoint\/v1/g' openai-python/openai/__init__.py
+        sed -i 's/https:\/\/api\.openai\.com\/v1/https:\/\/wonderfulfunthing\.allsortsofstuff\.amazonaws\.com\/myendpoint\/v1/g' openai/__init__.py
 
         
         # Perform search and replace in Markdown files
