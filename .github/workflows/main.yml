@@ -44,6 +44,13 @@ jobs:
         # Perform search and replace in Python file
         sed -i 's/https:\/\/api\.openai\.com\/v1/https:\/\/d03aet4o0f\.execute-api\.ap-southeast-2\.amazonaws\.com\/beta\/scalpgpt/g' openai/__init__.py
         
+        # Set us up for Pippification
+        sed -i 's/name = openai/name = scalpgpt/' setup.cfg
+        sed -i 's/description = Python client library for the OpenAI API/description = Python client library for the ScalpGPT API/' setup.cfg
+        sed -i 's/author = OpenAI/author = ScalpGPT/' setup.cfg
+        sed -i 's/author_email = support@openai.com/author_email = support@kaizoco.com/' setup.cfg
+        sed -i 's/url = https:\/\/github.com\/openai\/openai-python/url = https:\/\/github.com\/kaizoco\/scalpgpt-python/' setup.cfg
+
         # Perform search and replace in Markdown files
         find . -name "*.md" -exec sed -i 's/OpenAI/ScalpGPT/g' {} \;
         
