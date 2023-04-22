@@ -65,3 +65,13 @@ jobs:
         git remote set-url origin https://${{ secrets.GH_PAT }}@github.com/kaizoco/scalpgpt-python.git
         # When pushing, basically just stomp all over the other people's changes. Ours are the only ones that matter.
         git push origin $TARGET_BRANCH --force
+
+    - name: Create PIP package (python setup.py sdist bdist_wheel)
+      run: |
+        python setup.py sdist bdist_wheel
+
+    - name: Upload to TestPip
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        password: ${{ secrets.TEST_PIP_PASSWORD }}
+        repository_url: https://test.pypi.org/legacy/
