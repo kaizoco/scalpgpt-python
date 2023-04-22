@@ -50,6 +50,7 @@ jobs:
         sed -i 's/author = OpenAI/author = ScalpGPT/' setup.cfg
         sed -i 's/author_email = support@openai.com/author_email = support@kaizoco.com/' setup.cfg
         sed -i 's/url = https:\/\/github.com\/openai\/openai-python/url = https:\/\/github.com\/kaizoco\/scalpgpt-python/' setup.cfg
+        sed -i 's/pip install --upgrade openai/pip install --upgrade scalpgpt/' README.md
 
         # Perform search and replace in Markdown files
         find . -name "*.md" -exec sed -i 's/OpenAI/ScalpGPT/g' {} \;
