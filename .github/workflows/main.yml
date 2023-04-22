@@ -47,7 +47,7 @@ jobs:
         # Set us up for Pippification
         sed -i 's/name = openai/name = scalpgpt/' setup.cfg
         sed -i 's/description = Python client library for the OpenAI API/description = Python client library for the ScalpGPT API/' setup.cfg
-        sed -i 's/author = OpenAI/author = ScalpGPT/' setup.cfg
+        sed -i 's/author = OpenAI/author = ScalpGPT (Kaizo Co)/' setup.cfg
         sed -i 's/author_email = support@openai.com/author_email = support@kaizoco.com/' setup.cfg
         sed -i 's/url = https:\/\/github.com\/openai\/openai-python/url = https:\/\/github.com\/kaizoco\/scalpgpt-python/' setup.cfg
         sed -i 's/pip install --upgrade openai/pip install --upgrade scalpgpt/' README.md
