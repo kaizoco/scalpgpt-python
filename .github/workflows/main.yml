@@ -68,10 +68,13 @@ jobs:
 
     - name: Create PIP package (python setup.py sdist bdist_wheel)
       run: |
-        python setup.py sdist bdist_wheel
+        make build
+        make upload
+        
+# python setup.py sdist bdist_wheel
 
-    - name: Upload to TestPip
-      uses: pypa/gh-action-pypi-publish@master
-      with:
-        password: ${{ secrets.TEST_PIP_PASSWORD }}
-        repository_url: https://test.pypi.org/legacy/
+    # - name: Upload to TestPip
+    #   uses: pypa/gh-action-pypi-publish@master
+    #   with:
+    #     password: ${{ secrets.TEST_PIP_PASSWORD }}
+    #     repository_url: https://test.pypi.org/legacy/
