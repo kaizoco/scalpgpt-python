@@ -34,7 +34,7 @@ jobs:
         # Delete openai-python/.git because I'm a bitchass that doesn't know how to submodule shit reasonably
         rm -rf openai-python/.git
 
-        # Move all files from ./openai-python to ./
+        # Move all files from ./opgit stenai-python to ./
         mv openai-python/* .
         
         # Perform search and replace in Python file
