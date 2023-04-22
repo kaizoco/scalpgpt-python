@@ -1,1 +1,0 @@
-\n\n#Additional Notes\n\nYes, this is totally a thing to give you some plausible deniability that you are not paying directly to a company whose services may or may not be explicitly disallowed in your employer's environment. Because we're totally not that company at all!
